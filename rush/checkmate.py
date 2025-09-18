@@ -5,14 +5,14 @@ def checkmate(board: str):
         print("Failed")
         return
 
-    n = len(rows)
+    n_rows = len(rows)
     # check square
-    if any(len(r) != n for r in rows):
+    if any(len(r) != n_rows for r in rows):
         print("Failed")
         return
 
     # normalize (upper case and replace other to ".")
-    allowed = set("PRQK")
+    allowed = set("PBRQK")
     grid = []
     king_count = 0
     for r in rows:
@@ -32,8 +32,8 @@ def checkmate(board: str):
 
     # find King
     kr = kc = None
-    for i in range(n):
-        for j in range(n):
+    for i in range(n_rows):
+        for j in range(n_rows):
             if grid[i][j] == 'K':
                 kr = i
                 kc = j
@@ -44,7 +44,7 @@ def checkmate(board: str):
 # Pawn
     for dc in (-1, 1):
         r, c = kr + 1, kc + dc
-        if 0 <= r < n and 0 <= c < n and grid[r][c] == 'P':
+        if 0 <= r < n_rows and 0 <= c < n_rows and grid[r][c] == 'P':
             print("Success")
             return
 
@@ -52,7 +52,7 @@ def checkmate(board: str):
     straight_dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
     for dr, dc in straight_dirs:
         r, c = kr + dr, kc + dc
-        while 0 <= r < n and 0 <= c < n:
+        while 0 <= r < n_rows and 0 <= c < n_rows:
             ch = grid[r][c]
             if ch != '.':  # first obstacle
                 if ch == 'R' or ch == 'Q':
@@ -67,7 +67,7 @@ def checkmate(board: str):
     diag_dirs = [(1, 1), (1, -1), (-1, 1), (-1, -1)]
     for dr, dc in diag_dirs:
         r, c = kr + dr, kc + dc
-        while 0 <= r < n and 0 <= c < n:
+        while 0 <= r < n_rows and 0 <= c < n_rows:
             ch = grid[r][c]
             if ch != '.':
                 if ch == 'B' or ch == 'Q':
@@ -77,4 +77,4 @@ def checkmate(board: str):
             r += dr
             c += dc
 
-    print("Fail")
+    print("Failed")
