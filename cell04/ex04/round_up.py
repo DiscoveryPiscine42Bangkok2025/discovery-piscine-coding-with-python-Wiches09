@@ -1,2 +1,4 @@
+import math
+
 num = input("Enter a number: ")
-print(round(float(num)))
+print(math.ceil(float(num)))

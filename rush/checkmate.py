@@ -28,6 +28,7 @@ def checkmate(board: str):
         grid.append(row)
 
     if king_count != 1:
+        print("Failed")
         return
 
     # find King
