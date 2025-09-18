@@ -41,17 +41,15 @@ def checkmate(board: str):
         if kr is not None:
             break
 
-    # 1) Pawns: pawns capture one row *up* from their position.
-    # So king is attacked if there's a pawn at (kr+1, kc-1) or (kr+1, kc+1).
+# Pawn
     for dc in (-1, 1):
         r, c = kr + 1, kc + dc
         if 0 <= r < n and 0 <= c < n and grid[r][c] == 'P':
             print("Success")
             return
 
-    # 3) Sliding pieces:
-    # straights -> R or Q
-    straight_dirs = [(1,0),(-1,0),(0,1),(0,-1)]
+# +
+    straight_dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
     for dr, dc in straight_dirs:
         r, c = kr + dr, kc + dc
         while 0 <= r < n and 0 <= c < n:
@@ -64,8 +62,9 @@ def checkmate(board: str):
             r += dr
             c += dc
 
-    # diagonals -> B or Q
-    diag_dirs = [(1,1),(1,-1),(-1,1),(-1,-1)]
+
+# X
+    diag_dirs = [(1, 1), (1, -1), (-1, 1), (-1, -1)]
     for dr, dc in diag_dirs:
         r, c = kr + dr, kc + dc
         while 0 <= r < n and 0 <= c < n:
