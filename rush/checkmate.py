@@ -6,12 +6,12 @@ def checkmate(board: str):
         return
 
     n = len(rows)
-    # require square board (spec says board remains square)
+    # check square
     if any(len(r) != n for r in rows):
         print("Failed")
         return
 
-    # Normalize: uppercase known pieces; everything else -> '.'
+    # normalize (upper case and replace other to ".")
     allowed = set("PRQK")
     grid = []
     king_count = 0
