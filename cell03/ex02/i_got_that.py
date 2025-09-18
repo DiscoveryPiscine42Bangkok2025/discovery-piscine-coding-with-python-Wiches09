@@ -1,6 +1,7 @@
+word = input("What did u say?: ")
 while (True):
-    word = input("What did u say?: ")
     if (word == "STOP"):
         break
     else:
+        word = input("Anything else?: ")
         continue

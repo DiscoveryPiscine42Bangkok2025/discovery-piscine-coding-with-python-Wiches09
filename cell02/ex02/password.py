@@ -1,7 +1,7 @@
-getin = input("Enter your password")
-password = "1234"
+getin = input("Enter your password: ")
+password = "Python is Awesom!"
 
 if (getin == password):
-    print("Access Granted!")
+    print("ACCESS GRANTED!")
 else:
-    print("Access Denied!")
+    print("ACCESS DENIED!")
